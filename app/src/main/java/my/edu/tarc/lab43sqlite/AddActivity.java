@@ -2,6 +2,7 @@ package my.edu.tarc.lab43sqlite;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 
@@ -30,6 +31,9 @@ public class AddActivity extends AppCompatActivity {
         phone = editTextPhone.getText().toString();
         if(phone.isEmpty()){
             editTextPhone.setError(getString(R.string.error_phone));
+            return;
+        }else if(!Patterns.PHONE.matcher(phone).matches()){
+            editTextPhone.setError("Invalid phone");
             return;
         }
         name = editTextName.getText().toString();
